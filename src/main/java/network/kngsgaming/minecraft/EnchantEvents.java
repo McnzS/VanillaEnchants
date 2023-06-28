@@ -153,9 +153,9 @@ public class EnchantEvents implements Listener {
                 event.setResult(resultItem);
 
                 int finalRepairCost = inventory.getRepairCost();
-                if (finalRepairCost > 40) {
+                /*if (finalRepairCost > 40) {
                     event.getView().getPlayer().sendMessage(plugin.chatPrepend() + ChatColor.RED + "This repair costs: " + ChatColor.GREEN + finalRepairCost + ChatColor.RED + " levels.");
-                }
+                }*/
                 inventory.setRepairCost(finalRepairCost);
                 event.getView().setProperty(InventoryView.Property.REPAIR_COST, finalRepairCost);
 
@@ -193,7 +193,7 @@ public class EnchantEvents implements Listener {
                                 if (event.getCurrentItem().getType() != Material.AIR && event.getCurrentItem() != items[0] && event.getCurrentItem() != items[1]) {
                                     // We now know the player has attempted to combine two items!
                                     // Now we make sure that the player has the levels required!
-                                    if (player.getLevel() >= anvilInventory.getRepairCost()) {
+                                    if (player.getLevel() >= anvilInventory.getRepairCost() && anvilInventory.getRepairCost() >= 40) {
                                         // Store these values before doing anything with the anvilInventory....
                                         int repairCost = anvilInventory.getRepairCost();
                                         int playerLevel = player.getLevel();
